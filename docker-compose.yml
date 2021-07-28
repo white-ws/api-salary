@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  api:
+    image: api-salary
+    ports:
+    - target: 8080
+      published: 8080
+    labels:
+      service: "api-salary"
