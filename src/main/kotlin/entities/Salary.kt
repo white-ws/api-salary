@@ -1,5 +1,7 @@
 package entities
 
+import com.thelonedev.plugins.CUID
+import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
@@ -12,4 +14,14 @@ data class Salary(
     val yoe: Int,
     val tc: Long,
     val createdDt: Instant
-)
+) {
+    constructor(company: Company, level: String, field: String, yoe: Int, tc: Long): this(
+        id = CUID.generateCUID(),
+        company = company,
+        level = level,
+        field = field,
+        yoe = yoe,
+        tc = tc,
+        createdDt = Clock.System.now()
+    )
+}

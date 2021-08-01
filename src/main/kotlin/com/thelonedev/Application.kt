@@ -13,5 +13,6 @@ fun main() {
         configureHTTP()
         configureMonitoring()
         configureDI()
+        configureDatastore()
     }.start(wait = true)
 }

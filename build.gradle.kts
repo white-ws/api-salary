@@ -38,6 +38,7 @@ application {
 
 repositories {
     jcenter()
+    mavenCentral()
     maven { url = URI("https://kotlin.bintray.com/ktor") }
 }
 
@@ -51,6 +52,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
     implementation("io.insert-koin:koin-ktor:$koin_version")
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
 }
