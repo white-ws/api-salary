@@ -2,9 +2,29 @@ version: "3.7"
 
 services:
   api:
+    depends_on:
+      - db
     image: api-salary
     ports:
-    - target: 8080
-      published: 8080
+      - "8080:80"
+    restart: always
     labels:
       service: "api-salary"
+    environment:
+      DB_NAME: belle
+      DB_HOST: db
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: 3306
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: belle
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+

@@ -1,9 +1,6 @@
 package com.thelonedev
 
-import com.thelonedev.plugins.configureDI
-import com.thelonedev.plugins.configureHTTP
-import com.thelonedev.plugins.configureMonitoring
-import com.thelonedev.plugins.configureRouting
+import com.thelonedev.plugins.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 

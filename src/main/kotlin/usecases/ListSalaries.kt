@@ -1,9 +1,10 @@
 package usecases
 
+import datastores.SalaryDatastore
 import entities.Salary
 
-class ListSalaries {
+class ListSalaries(private val salaryDatastore: SalaryDatastore) {
     operator fun invoke(): List<Salary> {
-        return emptyList()
+        return salaryDatastore.getAll()
     }
 }
