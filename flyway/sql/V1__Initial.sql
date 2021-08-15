@@ -1,0 +1,17 @@
+CREATE TABLE salaries (
+    id VARCHAR(30) PRIMARY KEY,
+    company_id VARCHAR(30) NOT NULL,
+    level VARCHAR(5),
+    field VARCHAR(20),
+    yoe INT NOT NULL,
+    tc BIGINT NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE companies (
+    id VARCHAR(30) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
