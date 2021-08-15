@@ -11,7 +11,7 @@ import java.time.Instant
 
 object SalaryTable : Table("salaries") {
     val id: Column<String> = varchar("id", 30)
-    val companyId: Column<String> = varchar("company_id", 30)
+    val companyId: Column<String> = varchar("company_id", 30) references CompanyTable.id
     val level: Column<String> = varchar("level", 5)
     val field: Column<String> = varchar("field", 20)
     val yoe: Column<Int> = integer("yoe")
@@ -47,6 +47,7 @@ class SalaryDatastore {
     fun getAll(): List<Salary> {
         return transaction {
             (SalaryTable innerJoin CompanyTable).select { SalaryTable.companyId eq CompanyTable.id }
-        }.map(ResultRow::toSalary)
+                .map(ResultRow::toSalary)
+        }
     }
 }

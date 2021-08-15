@@ -11,7 +11,7 @@ fun Application.configureDatastore() {
     val dbName = environment.config.property("database.name").getString()
 
     Database.connect(url = "jdbc:mysql://$host:$port/$dbName",
-        driver = "com.mysql.jdbc.Driver",
+        driver = "com.mysql.cj.jdbc.Driver",
         user = user,
         password = password
     )

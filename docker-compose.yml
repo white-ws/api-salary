@@ -6,12 +6,12 @@ services:
       - db
     image: api-salary
     ports:
-      - "8080:80"
+      - "80:8080"
     restart: always
     labels:
       service: "api-salary"
     environment:
-      DB_NAME: belle
+      DB_NAME: ${DB_NAME}
       DB_HOST: db
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -19,12 +19,26 @@ services:
 
   db:
     image: mysql:8.0
-    volumes:
-      - db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: belle
+      MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  migration:
+    image: flyway/flyway:7.12
+    volumes:
+      - ./flyway/sql:/flyway/sql
+    depends_on:
+      - db
+    environment:
+      FLYWAY_URL: jdbc:mysql://db:3306/${DB_NAME}
+      FLYWAY_USER: ${DB_USER}
+      FLYWAY_PASSWORD: ${DB_PASSWORD}
+      FLYWAY_CONNECT_RETRIES: 100
+    command: migrate
+
+
+
 

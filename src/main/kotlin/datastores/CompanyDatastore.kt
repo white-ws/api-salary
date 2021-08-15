@@ -10,7 +10,7 @@ import java.time.Instant
 
 object CompanyTable : Table("companies") {
     val id: Column<String> = varchar("id", 30)
-    val name: Column<String> = varchar("level", 20)
+    val name: Column<String> = varchar("name", 50)
     val createdDt: Column<Instant> = timestamp("created_dt")
     val updatedDt: Column<Instant> = timestamp("updated_dt")
 }
