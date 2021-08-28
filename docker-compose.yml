@@ -40,9 +40,13 @@ services:
   nginx:
     build:
       context: ./nginx
-      args:
-      - NGINX_EMAIL=${NGINX_EMAIL}
-      - NGINX_HOST=${NGINX_HOST}
+    environment:
+      NGINX_EMAIL: ${NGINX_EMAIL}
+      NGINX_HOST: ${NGINX_HOST}
+    links:
+      - api:api
+    depends_on:
+      - api
     restart: always
     volumes:
       - ./nginx:/etc/nginx/conf.d
