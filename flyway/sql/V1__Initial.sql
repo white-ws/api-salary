@@ -1,8 +1,8 @@
 CREATE TABLE salaries (
     id VARCHAR(30) PRIMARY KEY,
     company_id VARCHAR(30) NOT NULL,
-    level VARCHAR(5),
-    field VARCHAR(20),
+    level VARCHAR(50),
+    field VARCHAR(50),
     yoe INT NOT NULL,
     tc BIGINT NOT NULL,
     created_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
