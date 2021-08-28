@@ -2,6 +2,7 @@ package com.thelonedev.plugins
 
 import entities.AddSalaryRequest
 import io.ktor.application.*
+import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -28,6 +29,7 @@ fun Route.salaryRoutes() {
             post {
                 val request = call.receive<AddSalaryRequest>()
                 addSalary(request)
+                call.respond(HttpStatusCode.Accepted)
             }
         }
     }

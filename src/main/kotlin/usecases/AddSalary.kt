@@ -19,6 +19,7 @@ class AddSalary(
             yoe = request.yoe,
             tc = request.tc
         )
+        salaryDatastore.create(salary)
     }
 
     private fun createAndReturnANewCompany(name: String): Company {

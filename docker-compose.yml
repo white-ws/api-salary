@@ -5,8 +5,6 @@ services:
     depends_on:
       - db
     image: api-salary
-    ports:
-      - "80:8080"
     restart: always
     labels:
       service: "api-salary"
@@ -39,6 +37,18 @@ services:
       FLYWAY_CONNECT_RETRIES: 100
     command: migrate
 
+  nginx:
+    build:
+      context: ./nginx
+      args:
+      - NGINX_EMAIL=${NGINX_EMAIL}
+      - NGINX_HOST=${NGINX_HOST}
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
 
 
 
