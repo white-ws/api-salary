@@ -45,6 +45,8 @@ services:
       NGINX_HOST: ${NGINX_HOST}
     links:
       - api:api
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
     depends_on:
       - api
     restart: always
